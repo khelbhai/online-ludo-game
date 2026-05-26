@@ -1,0 +1,13 @@
+{
+  "name": "online-ludo-game-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Online Ludo Game",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server",
+    "dev": "http-server -p 8000"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎲 Online Ludo Game - Play Now</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎲 Online Ludo Game</h1>
+            <p class="user-info" id="userInfo">Not logged in</p>
+        </div>
+
+        <!-- Login/Register Section -->
+        <div class="auth-section" id="authSection">
+            <div class="form-container">
+                <h2>Login</h2>
+                <input type="email" id="email" placeholder="Enter email" />
+                <input type="password" id="password" placeholder="Enter password" />
+                <button onclick="login()">🔓 Login</button>
+                <p>Don't have an account? <button class="link-btn" onclick="toggleRegister()">Register</button></p>
+                <hr style="margin: 15px 0;">
+                <p style="font-size: 0.9em; color: #666;"><strong>Demo Credentials:</strong><br>📧 demo@ludo.com<br>🔑 demo123</p>
+            </div>
+        </div>
+
+        <!-- Main Game Section -->
+        <div class="game-section" id="gameSection" style="display: none;">
+            <!-- Room Selection -->
+            <div class="rooms-container">
+                <h2>🏠 Available Rooms</h2>
+                <div class="room-filters">
+                    <input type="text" id="roomSearch" placeholder="Search room..." />
+                    <select id="betFilter">
+                        <option value="">All Bet Amounts</option>
+                        <option value="10">₹10</option>
+                        <option value="50">₹50</option>
+                        <option value="100">₹100</option>
+                        <option value="500">₹500</option>
+                    </select>
+                </div>
+                <div class="rooms-list" id="roomsList"></div>
+            </div>
+
+            <!-- Create Room Section -->
+            <div class="create-room-container">
+                <h3>🆕 Create New Room</h3>
+                <div class="form-group">
+                    <label>Room Name:</label>
+                    <input type="text" id="roomName" placeholder="Enter room name (e.g., High Rollers)" />
+                </div>
+                <div class="form-group">
+                    <label>💰 Bet Amount (₹):</label>
+                    <select id="betAmount">
+                        <option value="10">₹10 - Low Stakes</option>
+                        <option value="50">₹50 - Medium Stakes</option>
+                        <option value="100">₹100 - High Stakes</option>
+                        <option value="500">₹500 - Very High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>👥 Max Players:</label>
+                    <select id="maxPlayers">
+                        <option value="2">2 Players</option>
+                        <option value="3">3 Players</option>
+                        <option value="4">4 Players</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="createRoom()">➕ Create Room</button>
+            </div>
+
+            <!-- Active Game Section -->
+            <div class="game-container" id="gameContainer" style="display: none;">
+                <div class="game-header">
+                    <h3 id="roomTitle">Room: </h3>
+                    <button onclick="leaveRoom()" style="padding: 8px 15px; background: #ff6347; color: white; border: none; border-radius: 5px; cursor: pointer;">❌ Leave Room</button>
+                </div>
+                
+                <div class="game-content">
+                    <div class="game-board">
+                        <canvas id="ludoBoard" width="400" height="400"></canvas>
+                    </div>
+                    
+                    <div class="game-info">
+                        <div class="info-card">
+                            <h4>💰 Bet Amount</h4>
+                            <p id="betDisplay" style="font-size: 1.5em; color: #667eea; font-weight: bold;">₹</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h4>👥 Players in Room</h4>
+                            <ul id="playersList"></ul>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h4>📊 Game Status</h4>
+                            <p id="gameStatus" style="color: #666;">Waiting for players...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>🎲 Online Ludo Game © 2026 | Made with ❤️</p>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/rooms.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
